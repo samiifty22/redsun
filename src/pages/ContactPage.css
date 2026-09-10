@@ -1,0 +1,65 @@
+.formpage {
+  background:
+    radial-gradient(60% 40% at 90% 0%, rgba(232, 100, 28, 0.1), transparent 60%),
+    var(--paper);
+  padding-block: clamp(120px, 18vh, 180px) clamp(60px, 9vw, 110px);
+}
+
+.formpage__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(32px, 6vw, 84px);
+  align-items: start;
+}
+
+.formpage__title {
+  margin: 16px 0 18px;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.formpage__intro {
+  margin-bottom: 34px;
+}
+
+.formpage__contacts {
+  display: grid;
+  gap: 20px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.formpage__block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.formpage__block p,
+.formpage__block a {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.formpage__block a:hover {
+  color: var(--orange-deep);
+}
+
+.formpage__block-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  .formpage__grid {
+    grid-template-columns: 1fr;
+  }
+}

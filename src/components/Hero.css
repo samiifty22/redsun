@@ -1,0 +1,383 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-block: clamp(128px, 20vh, 200px) 0;
+  background: var(--paper);
+}
+
+.hero__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    60% 45% at 85% 15%,
+    rgba(232, 100, 28, 0.12),
+    transparent 62%
+  );
+}
+
+/* the circulating RedSun mark, behind the photos */
+.hero__sun {
+  position: absolute;
+  top: -150px;
+  right: -70px;
+  z-index: 1;
+  opacity: 0.22;
+  will-change: transform;
+}
+
+.hero__grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero__copy {
+  max-width: 620px;
+  padding-right: 12px;
+  padding-bottom: clamp(80px, 14vh, 140px);
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.hero__eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.hero__title {
+  font-size: clamp(2.35rem, 5.2vw, 4.15rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+.hero__line {
+  display: block;
+}
+
+.hero__word {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+}
+
+.hero__word:not(:last-child) {
+  margin-right: 0.24em;
+}
+
+.hero__word-inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+.hero__lower {
+  margin-top: 26px;
+}
+
+.hero__body {
+  max-width: 40ch;
+  font-size: 1.02rem;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  margin-top: 28px;
+}
+
+.hero__link {
+  position: relative;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink);
+  padding-bottom: 3px;
+}
+
+.hero__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero__link:hover::after {
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* mini face stack + handwritten note */
+.hero__faces {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.hero__faces-stack {
+  display: flex;
+}
+
+.hero__faces-stack img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid var(--paper);
+  box-shadow: 0 6px 16px -6px rgba(23, 22, 26, 0.45);
+}
+
+.hero__faces-stack img:not(:first-child) {
+  margin-left: -14px;
+}
+
+.hero__faces .handnote {
+  font-size: 1.2rem;
+}
+
+/* ---------- desktop: angular-cut stacked photos ---------- */
+
+.hero__stack {
+  position: absolute;
+  top: 0;
+  bottom: 74px;
+  right: clamp(-40px, -2vw, 0px);
+  width: min(46vw, 560px);
+  z-index: 1;
+}
+
+.hero__stack-item {
+  position: absolute;
+  will-change: transform;
+}
+
+.hero__stack-item svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 40px 60px rgba(23, 22, 26, 0.32));
+}
+
+.hero__stack-item--front {
+  top: 0;
+  left: 2%;
+  width: 74%;
+  z-index: 3;
+}
+
+.hero__stack-item--back {
+  bottom: 2%;
+  right: 0;
+  width: 72%;
+  z-index: 2;
+}
+
+.hero__stack-tag {
+  position: absolute;
+  left: 6%;
+  bottom: 26%;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: rgba(23, 22, 26, 0.62);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.hero__stack-tag-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+/* ---------- mobile single photo ---------- */
+
+.hero__mphoto {
+  display: none;
+}
+
+/* ---------- keyword marquee ---------- */
+
+.hero__marquee {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  overflow: hidden;
+  padding-block: 18px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.hero__marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+
+.hero__marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+  padding-inline: 15px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.hero__marquee-star {
+  color: var(--orange);
+}
+
+/* ============ responsive ============ */
+
+@media (max-width: 1000px) {
+  .hero {
+    display: block;
+    min-height: auto;
+    padding-block: clamp(112px, 17vh, 150px) 0;
+    background:
+      radial-gradient(
+        90% 42% at 50% 100%,
+        rgba(242, 183, 5, 0.28),
+        transparent 70%
+      ),
+      var(--paper);
+  }
+
+  .hero__glow {
+    display: none;
+  }
+
+  .hero__grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* SS2: centred headline + single CTA */
+  .hero__copy {
+    order: 1;
+    max-width: 100%;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__line {
+    display: inline;
+  }
+
+  .hero__line:not(:last-child)::after {
+    content: " ";
+  }
+
+  .hero__title {
+    font-size: clamp(2.3rem, 9vw, 3.1rem);
+  }
+
+  .hero__lower {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__body {
+    max-width: 34ch;
+  }
+
+  .hero__actions {
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .hero__link,
+  .hero__faces,
+  .hero__stack,
+  .hero__sun {
+    display: none;
+  }
+
+  .hero__mphoto {
+    order: 2;
+    display: block;
+    position: relative;
+    width: min(78%, 320px);
+    margin: 32px auto 0;
+  }
+
+  .hero__mphoto svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 30px 46px rgba(23, 22, 26, 0.28));
+  }
+
+  .hero__mphoto .hero__stack-tag {
+    left: 50%;
+    bottom: 16%;
+    transform: translateX(-50%);
+  }
+
+  .hero__mphoto-sun {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    display: block;
+    width: 54px;
+    height: 54px;
+    filter: drop-shadow(0 6px 14px rgba(242, 122, 0, 0.4));
+  }
+
+  .hero__marquee {
+    position: relative;
+    margin-top: 30px;
+  }
+}

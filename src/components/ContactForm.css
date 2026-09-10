@@ -1,0 +1,155 @@
+.cform {
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 42px);
+  box-shadow: var(--shadow-lift);
+}
+
+.cform__form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cform__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.cform__field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.cform__label {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.cform__label b {
+  color: var(--orange);
+}
+
+.cform__input {
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line-strong);
+  background: var(--paper);
+  font: inherit;
+  font-size: 0.98rem;
+  color: var(--ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cform__input:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(232, 100, 28, 0.16);
+}
+
+.cform__input[aria-invalid="true"] {
+  border-color: #d33;
+}
+
+.cform__textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.55;
+}
+
+select.cform__input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2317161a' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.cform__error {
+  font-size: 0.8rem;
+  color: #c22;
+}
+
+.cform__honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.cform__notice {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(232, 100, 28, 0.1);
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.cform__notice a {
+  color: var(--orange-deep);
+  text-decoration: underline;
+}
+
+.cform__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+  margin-top: 6px;
+}
+
+.cform__actions .btn[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.cform__fineprint {
+  font-size: 0.8rem;
+  color: var(--muted);
+  max-width: 30ch;
+}
+
+/* success */
+.cform__done {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+}
+
+.cform__done-mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.cform__done h3 {
+  font-size: 1.5rem;
+}
+
+.cform__done p {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 42ch;
+}
+
+@media (max-width: 560px) {
+  .cform__row {
+    grid-template-columns: 1fr;
+  }
+}
